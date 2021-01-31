@@ -59,9 +59,43 @@
 .cardName {
   margin: 1rem 0;
   font-weight: bold;
+  font-size: 30px;
 }
 
-.cardName:empty::after,
+/* .cardName:empty::after,
 .initials:empty::after {
   content: "Unknown";
+} */
+
+.cardContentInfo {
+  text-align: initial;
+  font-size: 22px;
+}
+
+.linksWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.linkWrapper {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;;
+}
+
+.linkWrapper + .linkWrapper {
+  margin-left: 5px;
+}
+
+.link {
+  display: block;
+  width: inherit;
+  height: inherit;
+}
+
+.linkImages {
+  width: inherit;
+  height:  inherit;
+  object-fit: cover;
+  object-position: center;
 }
