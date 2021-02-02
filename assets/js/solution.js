@@ -94,7 +94,8 @@ function createContacts(place) {
         linkImages.setAttribute("src", "../assets/icons/twitter.svg");
         break;
     }
-    wrapper.append(linksTo.append(linkImages));
+    linksTo.append(linkImages)
+    wrapper.append(linksTo);
     return wrapper;
   });
   return contactsElem;
