@@ -16,7 +16,7 @@
 
 
 
-function createElement(type, { classNames, onClick }, ...children) {
+function createElement(type, { classNames, onClick, }, ...children) {
   const elem = document.createElement(type);
   elem.classList.add(...classNames);
   elem.onclick = onClick;
@@ -40,19 +40,66 @@ function createPlaceCards(place) {
     { classNames: ["cardContentInfo"] },
     document.createTextNode("На этом месте могла бы быть ваша реклама!")
   );
+
+  const div = createElement(
+    'div',
+    {classNames: ['linksWrapper']},
+    ...createContacts(place),
+  );
+  
   const article = createElement(
     "article",
     { classNames: ["cardContainer"] },
     createImageWrapper(place),
     h2,
     p,
-    
-  );
- 
-
-  return createElement("li", { classNames: ["cardWrapper"] }, article);
+    div,
+    )
+    return createElement("li", { classNames: ["cardWrapper"] }, article);
 }
 
+
+
+function createContacts(place) {
+  const contacts = place.contacts;
+  const contactsElem = contacts.map((link) => {
+    const hostLink = new URL(link).hostname;
+
+    const wrapper = createElement(
+      'div',
+      {classNames: ['linkWrapper']}
+    )
+
+
+    const linkImages = createElement(
+      "img", {
+      classNames: ["linkImages"],
+          });
+
+    const linksTo = createElement(
+      "a", {
+      classNames: ["link"],
+      attributes: { href: link },
+    });
+    switch (hostLink) {
+      case "www.facebook.com":
+        linkImages.setAttribute("alt", "Facebook icon");
+        linkImages.setAttribute("src", "../assets/icons/iconfinder_facebook_circle_gray_107140.svg");
+        break;
+      case "www.instagram.com":
+        linkImages.setAttribute("alt", "Instagram icon");
+        linkImages.setAttribute("src", "../assets/icons/iconfinder_instagram_circle_gray_107138.svg");
+        break;
+        case "twitter.com":
+          linkImages.setAttribute("alt", "Twitter icon");
+          linkImages.setAttribute("src", "../assets/icons/twitter.svg");
+        break;
+    }
+    wrapper.append(linksTo.append(linkImages));
+    return wrapper;
+  });
+  return contactsElem;
+ }
 //-------------------------------------------------------------------
 
 function createImageWrapper(place) {
