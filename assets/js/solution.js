@@ -76,25 +76,25 @@ function createContacts(place) {
     });
     switch (hostLink) {
       case "www.facebook.com":
-        linkImages.setAttribute("alt", "Facebook icon");
+        linkImages.setAttribute("alt", "Facebook");
         linkImages.setAttribute(
           "src",
           "../assets/icons/iconfinder_facebook_circle_gray_107140.svg"
         );
         break;
       case "www.instagram.com":
-        linkImages.setAttribute("alt", "Instagram icon");
+        linkImages.setAttribute("alt", "Instagram");
         linkImages.setAttribute(
           "src",
           "../assets/icons/iconfinder_instagram_circle_gray_107138.svg"
         );
         break;
       case "twitter.com":
-        linkImages.setAttribute("alt", "Twitter icon");
+        linkImages.setAttribute("alt", "Twitter");
         linkImages.setAttribute("src", "../assets/icons/twitter.svg");
         break;
     }
-    linksTo.append(linkImages)
+    linksTo.append(linkImages);
     wrapper.append(linksTo);
     return wrapper;
   });
