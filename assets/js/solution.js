@@ -6,17 +6,18 @@
 //   .set("www.facebook.com", "src_to_icon")
 //   .set("www.facebook.com", "src_to_icon");
 
+let map = new Map();
+map.set(
+  "www.facebook.com",
+  "../icons/iconfinder_facebook_circle_gray_107140.svg"
+);
+map.set(
+  "www.instagram.com",
+  "../icons/iconfinder_instagram_circle_gray_107138.svg"
+);
+map.set("twitter.com", "./assets/icons/twitter.svg");
 
-
-
-  let map = new Map()
-  map.set("www.facebook.com", "../icons/iconfinder_facebook_circle_gray_107140.svg")
-  map.set("www.instagram.com", "../icons/iconfinder_instagram_circle_gray_107138.svg")
-  map.set("twitter.com","./assets/icons/twitter.svg")
-
-
-
-function createElement(type, { classNames, onClick, }, ...children) {
+function createElement(type, { classNames, onClick }, ...children) {
   const elem = document.createElement(type);
   elem.classList.add(...classNames);
   elem.onclick = onClick;
@@ -42,64 +43,62 @@ function createPlaceCards(place) {
   );
 
   const div = createElement(
-    'div',
-    {classNames: ['linksWrapper']},
-    ...createContacts(place),
+    "div",
+    { classNames: ["linksWrapper"] },
+    ...createContacts(place)
   );
-  
+
   const article = createElement(
     "article",
     { classNames: ["cardContainer"] },
     createImageWrapper(place),
     h2,
     p,
-    div,
-    )
-    return createElement("li", { classNames: ["cardWrapper"] }, article);
+    div
+  );
+  return createElement("li", { classNames: ["cardWrapper"] }, article);
 }
-
-
 
 function createContacts(place) {
   const contacts = place.contacts;
   const contactsElem = contacts.map((link) => {
     const hostLink = new URL(link).hostname;
 
-    const wrapper = createElement(
-      'div',
-      {classNames: ['linkWrapper']}
-    )
+    const wrapper = createElement("div", { classNames: ["linkWrapper"] });
 
-
-    const linkImages = createElement(
-      "img", {
+    const linkImages = createElement("img", {
       classNames: ["linkImages"],
-          });
+    });
 
-    const linksTo = createElement(
-      "a", {
+    const linksTo = createElement("a", {
       classNames: ["link"],
       attributes: { href: link },
     });
     switch (hostLink) {
       case "www.facebook.com":
         linkImages.setAttribute("alt", "Facebook icon");
-        linkImages.setAttribute("src", "../assets/icons/iconfinder_facebook_circle_gray_107140.svg");
+        linkImages.setAttribute(
+          "src",
+          "../assets/icons/iconfinder_facebook_circle_gray_107140.svg"
+        );
         break;
       case "www.instagram.com":
         linkImages.setAttribute("alt", "Instagram icon");
-        linkImages.setAttribute("src", "../assets/icons/iconfinder_instagram_circle_gray_107138.svg");
+        linkImages.setAttribute(
+          "src",
+          "../assets/icons/iconfinder_instagram_circle_gray_107138.svg"
+        );
         break;
-        case "twitter.com":
-          linkImages.setAttribute("alt", "Twitter icon");
-          linkImages.setAttribute("src", "../assets/icons/twitter.svg");
+      case "twitter.com":
+        linkImages.setAttribute("alt", "Twitter icon");
+        linkImages.setAttribute("src", "../assets/icons/twitter.svg");
         break;
     }
     wrapper.append(linksTo.append(linkImages));
     return wrapper;
   });
   return contactsElem;
- }
+}
 //-------------------------------------------------------------------
 
 function createImageWrapper(place) {
