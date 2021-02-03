@@ -59,7 +59,8 @@
 .cardName {
   margin: 1rem 0;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 1.5rem;
+  min-height: 1.5rem;
 }
 
 /* .cardName:empty::after,
