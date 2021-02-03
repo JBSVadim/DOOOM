@@ -17,7 +17,7 @@
 
 .cardWrapper {
   display: flex;
-  border: 4px solid;
+  /* border: 4px solid; */
   margin: 2rem 1rem;
 }
 
@@ -26,6 +26,7 @@
   flex-direction: column;
   text-align: center;
   width: 320px;
+  min-height: 500px;
 }
 
 .cardImageWrapper {
@@ -74,6 +75,7 @@
 }
 
 .linksWrapper {
+  margin-top: auto ;
   display: flex;
   flex-direction: row;
 }
@@ -82,6 +84,12 @@
   width: 40px;
   height: 40px;
   cursor: pointer;;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+
+.linkWrapper:hover {
+  background-color: lightblue ;
 }
 
 .linkWrapper + .linkWrapper {
