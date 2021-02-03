@@ -25,16 +25,21 @@ function createElement(type, { classNames, onClick }, ...children) {
   return elem;
 }
 
+
+
+
+
+
 fetch('http://192.168.1.148:3000/users')
 .then((response) => response.json())
 .then((data)=> {
   const cardContainer = document.getElementById("root");
-  data = responseData.map((data) => createPlaceCards(data));
-  cardContainer.append(...data);
+  const cards = data.map((place)=> createPlaceCards(place)) 
+  cardContainer.append(...cards);
 })
 .catch((err)=> {
   console.log('U JS-Kung-FU is weak')
-})
+});
 
 
 
