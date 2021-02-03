@@ -25,6 +25,10 @@ function createElement(type, { classNames, onClick }, ...children) {
   return elem;
 }
 
+function SaintNibleOfMember () {
+  this.classList.toggle('modificate')
+}
+
 
 
 
@@ -76,7 +80,7 @@ function createPlaceCards(place) {
     p,
     div
   );
-  return createElement("li", { classNames: ["cardWrapper"],}, article);
+  return createElement("li", { classNames: ["cardWrapper"], onClick:SaintNibleOfMember}, article);
 }
 
 function createContacts(place) {
