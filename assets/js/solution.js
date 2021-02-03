@@ -25,9 +25,24 @@ function createElement(type, { classNames, onClick }, ...children) {
   return elem;
 }
 
-const cardContainer = document.getElementById("root");
-const cards = responseData.map((place) => createPlaceCards(place));
-cardContainer.append(...cards);
+fetch('http://192.168.1.148:3000/users')
+.then((response) => response.json())
+.then((data)=> {
+  const cardContainer = document.getElementById("root");
+  data = responseData.map((data) => createPlaceCards(data));
+  cardContainer.append(...data);
+})
+.catch((err)=> {
+  console.log('U JS-Kung-FU is weak')
+})
+
+
+
+
+
+// const cardContainer = document.getElementById("root");
+// const cards = responseData.map((place) => createPlaceCards(place));
+// cardContainer.append(...cards);
 
 function createPlaceCards(place) {
   const h2 = createElement(
